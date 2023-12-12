@@ -3,13 +3,23 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { MetaMaskProvider } from '@metamask/sdk-react';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <MetaMaskProvider
+      sdkOptions={{
+        dappMetadata: {
+          name: 'PFP Project',
+          url: window.location.host,
+        },
+      }}
+    >
+      <App />
+    </MetaMaskProvider>
   </React.StrictMode>
 );
 
