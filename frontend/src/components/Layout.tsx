@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import Web3, { Contract, ContractAbi } from 'web3';
 import { useSDK } from '@metamask/sdk-react';
+
 import Header from './Header';
 import mintNftAbi from '../abis/mintNftAbi.json';
 
@@ -25,13 +26,13 @@ const Layout: FC = () => {
     setMintNftContract(
       new web3.eth.Contract(
         mintNftAbi,
-        '0x1e3762e95365395f862241e7a4099b94bed2afaf'
+        '0xcca912d930b763384237220b256d1afdb71120d0'
       )
     );
   }, [web3]);
 
   return (
-    <div className='bg-red-100 min-h-screen max-w-screen-md mx-auto flex flex-col'>
+    <div className='min-h-screen max-w-screen-md mx-auto flex flex-col'>
       <Header account={account} setAccount={setAccount} />
       <Outlet context={{ account, web3, mintNftContract }} />
     </div>
