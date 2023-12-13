@@ -2,15 +2,8 @@ import { FC, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import Web3, { Contract, ContractAbi } from 'web3';
 import { useSDK } from '@metamask/sdk-react';
-
 import Header from './Header';
 import mintNftAbi from '../abis/mintNftAbi.json';
-
-export interface OutletContext {
-  account: string;
-  web3: Web3;
-  mintNftContract: Contract<ContractAbi>;
-}
 
 const Layout: FC = () => {
   const [account, setAccount] = useState<string>('');
@@ -38,7 +31,7 @@ const Layout: FC = () => {
   }, [web3]);
 
   return (
-    <div className='bg-red-100 min-h-screen max-w-screen-md mx-auto'>
+    <div className='bg-red-100 min-h-screen max-w-screen-md mx-auto flex flex-col'>
       <Header account={account} setAccount={setAccount} />
       <Outlet context={{ account, web3, mintNftContract }} />
     </div>
